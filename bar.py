@@ -87,6 +87,29 @@ while True:
             
             
     if x == "A":
+#         for frame1 in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):
+#             frame = np.copy(frame1.array)
+#             frame.setflags(write=1)
+#             frame_rgb = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+#             frame_expanded = np.expand_dims(frame_rgb,axis=0)
+#             decodeObjects = pyzbar.decode(frame)
+#             for obj in decodeObjects:
+#                 print ("Data",obj.data)
+#                 cv2.putText(frame, str(obj.data), (50,50), font, 2,(255,0,0),3)
+#             cv2.imshow("Frame",frame)
+#             if cv2.waitKey(1)== ord('q'):
+#                 cv2.destroyAllWindows()
+#                 break
+#             rawCapture.truncate(0)
+        
+        
+        
+        
+        
+        
+        
+        
+        
         camera.start_preview()
         time.sleep(2)
         camera.capture('qr.jpg')
