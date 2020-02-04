@@ -1,6 +1,5 @@
 # import the necessary packages
 from imutils.video import VideoStream
-import argparse
 import datetime
 import imutils
 import time
@@ -9,12 +8,13 @@ import cv2
 # construct the argument parser and parse the arguments
 vs = cv2.VideoCapture(0)
 firstFrame = None
-
-
+frame = vs.read()
+# firstFrame = frame
 # initialize the first frame in the video stream
 # loop over the frames of the video
 i = 0
-while True:
+
+while True:    
     # grab the current frame and initialize the occupied/unoccupied
     # text
     frame = vs.read()
@@ -30,7 +30,7 @@ while True:
     frame = imutils.resize(frame, width=500)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (21, 21), 0)
-
+    print(firstFrame)
     # if the first frame is None, initialize it
     if firstFrame is None:
         firstFrame = gray
@@ -62,10 +62,7 @@ while True:
     cv2.putText(frame, "Motion Status: {}".format(text), (10, 20),
         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
     print(text)
-    cv2.putText(frame, datetime.datetime.now().strftime("%A %d %B %Y %I:%M:%S%p"),
-        (10, frame.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
-
-    # show the frame and record if the user presses a key
+        # show the frame and record if the user presses a key
     cv2.imshow("Security Feed", frame)
     cv2.imshow("Thresh", thresh)
     cv2.imshow("Frame Delta", frameDelta)
@@ -73,9 +70,9 @@ while True:
       # if the `q` key is pressed, break from the lop
     if key == ord("q"):
         break
-    firstframe = vs.read()
-    firstframe = firstframe if ("vs", None) is None else firstframe[1]
+    
     print(i+1)
 # cleanup the camera and close any open windows
 vs.stop() if ("vs", None) is None else vs.release()
 cv2.destroyAllWindows()
+
