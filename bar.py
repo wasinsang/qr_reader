@@ -105,7 +105,7 @@ while True:
         
             print("[INFO] Found {} barcode: {}".format(barcodeType,barcodeData))
         cv2.imshow("Image",image)
-        cv2.waitKey(2000)
+        cv2.waitKey(0)
         cv2.destroyAllWindows()
     
     
