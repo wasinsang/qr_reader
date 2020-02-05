@@ -24,9 +24,9 @@ while True:
     if x == "B":
         camera.start_preview()
         time.sleep(2)
-        camera.capture('qr.jpg')
+        camera.capture('symbol.jpg')
         camera.close()
-        img = cv2.imread('qr.jpg')
+        img = cv2.imread('symbol.jpg')
         clicked = False
         r = g = b = xpos = ypos = 0
 
